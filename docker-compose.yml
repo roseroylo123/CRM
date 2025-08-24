@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: agencycrm
+    ports: ["5432:5432"]
+  server:
+    build: ./server
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/agencycrm
+      JWT_SECRET: supersecretchange
+      PORT: 4000
+      NODE_ENV: production
+    depends_on: [db]
+    ports: ["4000:4000"]
+  web:
+    build: ./web
+    environment:
+      VITE_API_URL: http://localhost:4000
+    depends_on: [server]
+    ports: ["8080:80"]

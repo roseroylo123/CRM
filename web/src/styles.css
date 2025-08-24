@@ -1,0 +1,1 @@
+:root { --bg:#0B1220; --card:#111827; --text:#E5E7EB; --accent:#8B5CF6 } body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui} .card{background:var(--card);padding:16px;border-radius:12px} .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px}
